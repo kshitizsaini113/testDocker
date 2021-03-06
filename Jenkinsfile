@@ -3,12 +3,30 @@ pipeline {
     
     environment {
         dockerImage = ''
-        registry = "kshitizsaini113/testDocker"
+        registry = "kshitizsaini113/testdocker"
         registryCredential = 'dockerHub'
     }
     
     stages {
         
+        stage("Build"){
+            steps{
+            echo "Build Stage"
+            }
+        }
+
+        stage("Test"){
+            steps{
+            sh 'c++ /tmp/Mutex-The-System-Metrics-Analyzer/src/main.cpp'
+            }
+        }
+
+        stage("Clean"){
+            steps{
+            sh './a.out'
+            }
+        }
+
         stage("Build Docker Image") {
             steps {
                 script {
