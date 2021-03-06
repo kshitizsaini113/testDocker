@@ -17,13 +17,13 @@ pipeline {
 
         stage("Test"){
             steps{
-            sh 'c++ /tmp/Mutex-The-System-Metrics-Analyzer/src/test.cpp'
+            sh 'c++ ./src/test.cpp -o testFile.output'
             }
         }
 
         stage("Clean"){
             steps{
-            sh './a.out'
+            sh './testFile.output'
             }
         }
 
