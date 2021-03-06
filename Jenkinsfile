@@ -17,7 +17,7 @@ pipeline {
 
         stage("Test"){
             steps{
-            sh 'c++ /tmp/Mutex-The-System-Metrics-Analyzer/src/main.cpp'
+            sh 'c++ /tmp/Mutex-The-System-Metrics-Analyzer/src/test.cpp'
             }
         }
 
