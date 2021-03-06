@@ -8,26 +8,20 @@ pipeline {
     }
     
     stages {
-        
-        stage("Build"){
-            steps{
-            echo "Build Stage"
-            }
-        }
 
-        stage("Test"){
+        stage("Build the project"){
             steps{
             sh 'c++ ./src/test.cpp -o testFile.output'
             }
         }
 
-        stage("Clean"){
+        stage("Testing the output"){
             steps{
             sh './testFile.output'
             }
         }
 
-        stage("Build Docker Image") {
+        stage("Building Docker Image") {
             steps {
                 script {
                     dockerImage = docker.build registry
@@ -35,7 +29,7 @@ pipeline {
             }
         }
         
-        stage("Upload to DockerHub") {
+        stage("Uploading image to DockerHub") {
             steps {
                 script {
                     docker.withRegistry("", registryCredential){
